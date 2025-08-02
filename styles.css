@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;      
+    align-items: center;          
+    gap: 20px;                       
+    margin-top: 3%;    
+}
+
+.food-btn, .intake-btn, .weights-btn, .account-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: none;
+    border-radius: 2rem;
+    border: 2px solid #333;
+    text-decoration: none;
+}
+
+/* search button in food/recipe */
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 5%;
+}
+
+.search-content, .submit-button, .qr-btn {
+    border-radius: 2rem;
+    background-color: none;
+    font-size: 16px;
+}
+
+.search-content {
+    padding: 15px 50px;
+}
+
+.submit-button, .qr-btn {
+    padding: 15px 30px;
+}
+
+/* Intake */
+.intake-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    justify-content: center;
+    text-align: center;
+    padding: 5%;
+}
+
+.daily-order-list, .weekly-order-list {
+    padding: 5%;
+}
+
+.daily-order-list option, .weekly-order-list option {
+ padding: 3%;
+}
+
+
+/* weights */
+.weight-container {
+    display: flex;
+    justify-content: center;      
+    align-items: center;          
+    gap: 40px;                       
+    margin-top: 3%;  
+}
