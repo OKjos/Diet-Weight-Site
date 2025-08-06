@@ -70,3 +70,78 @@
     gap: 40px;                       
     margin-top: 3%;  
 }
+
+
+
+
+
+
+
+.result-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 30px;
+  padding: 20px;
+  justify-items: center;
+}
+
+
+.result-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.result-name {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.img-results {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.img-results img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.macro-container h2 {
+  margin: 0;
+}
+
+.macro-container h3 {
+  margin-top: 10px;
+}
+
+
+.day-selector-title {
+  margin-top: 15%;
+}
+
+.selector-options {
+  margin-top: 15%;
+}
+
+
+.add-day {
+  margin-top: 50%;
+  width: 90%;
+  background-color: gray;
+  border-radius: 4px;
+}
+
+.get-recipe {
+  margin-top: 30%;
+  width: 90%;
+  background-color: gray;
+  border-radius: 4px;
+  
+}

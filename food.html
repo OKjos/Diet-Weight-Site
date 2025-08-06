@@ -20,7 +20,67 @@
         <button type="submit" class="submit-button" id="search-button">Search</button>
         <button type="button" class="qr-btn" id="qr-btn">QR Search</button>
     </section>
-    <section id="result-container">
+    <section class="result-container" id="result-container">
+
+        <!-- <section class="result-header">
+        <h2 class="result-name">APPLE</h2>
+
+        <section class="img-results">
+            <img src="./IMG/istockphoto-184276818-612x612.jpg" alt="Apple Image">
+
+            <section class="macro-container">
+                <h2>Macros</h2>
+                <h3>Carbs: 0.3g</h3>
+                <h3>Fat: </h3>
+                <h3>Protein: </h3>
+
+                <section class="day-selector-title">
+                    <h2>Add to a day</h2>
+                    <select class="selector-options">
+                        <option>Monday</option>
+                        <option>Tuesday</option>
+                        <option>Wednesday</option>
+                        <option>Thursday</option>
+                        <option>Friday</option>
+                        <option>Saturday</option>
+                        <option>Sunday</option>
+                    </select>
+                </section>
+
+                <button class="get-recipe">Get Recipe</button>
+            </section>
+        </section>
+        </section>  -->
+
+        <section class="result-header">
+        <h2 class="result-name">APPLE</h2>
+
+        <section class="img-results">
+            <img src="./IMG/istockphoto-184276818-612x612.jpg" alt="Apple Image">
+
+            <section class="macro-container">
+                <h2>Macros</h2>
+                <h3>Carbs: 0.3g</h3>
+                <h3>Fat: </h3>
+                <h3>Protein: </h3>
+
+                                <section class="day-selector-title">
+                    <h2>Add to a day</h2>
+                    <select id="select-options-id" class="selector-options" onchange="pickDay()">
+                        <option id="day" value="none" selected>Pick day</option>
+                        <option id="monday" value="monday">Monday</option>
+                        <option id="tuesday" value="tuesday">Tuesday</option>
+                        <option id="wednesday" value="wednesday">Wednesday</option>
+                        <option id="thursday" value="thursday">Thursday</option>
+                        <option id="friday" value="friday">Friday</option>
+                        <option id="saturday" value="saturday">Saturday</option>
+                        <option id="sunday" value="sunday">Sunday</option>
+                    </select>
+                </section>
+                <button class="get-recipe">Get Recipe</button>
+            </section>
+        </section>
+        </section> 
 
     </section>
     <script src="script.js"></script>

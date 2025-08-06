@@ -1,118 +1,79 @@
 const searchBtn = document.getElementById('search-button');
 const searchFoodInput = document.getElementById('search-input');
-const resultContainer = document.getElementById('result-container');
+const API_KEY = '07fcd47b30a04526abc96d3cd6680460';
 
+ searchBtn.addEventListener('click', recipeSearch);
+ searchFoodInput.addEventListener('keydown', function (event) {
+     if (event.key === "Enter") {
+         recipeSearch();
+     }
+ });
 
 
 
 
+async function recipeSearch() {
+    const userInput = searchFoodInput.value.trim();
 
 
 
+    const searchUrl =  `https://api.spoonacular.com/recipes/complexSearch?query=${encodeURIComponent(userInput)}&addRecipeInstructions=true&addRecipeNutrition=true&number=20&apiKey=${API_KEY}`;
+    const searchResponse = await fetch(searchUrl);
+    const searchData = await searchResponse.json();
 
 
 
 
+    recipeDetailsSection = document.getElementById('result-container');
+    recipeDetailsSection.innerHTML = '';
 
 
 
+    searchData.results.forEach(async (recipe) => {
+        const infoResponse = await fetch(`https://api.spoonacular.com/recipes/${recipe.id}/information?includeNutrition=true&apiKey=${API_KEY}`);
+        const infoData = await infoResponse.json();
 
+        const getMacro = (name) => {
+            const nutrient = infoData.nutrition?.nutrients?.find(n => n.name === name);
+            return nutrient ? `${nutrient.amount} ${nutrient.unit}` : 'N/A';
+        };       
 
 
+        const recipeHTML = `
+            <section class="result-header">
+                <h2 class="result-name">${infoData.title}</h2>
 
+                <section class="img-results">
+                    <img src="${infoData.image}" alt="${infoData.title}">
 
+                    <section class="macro-container">
+                    <h2>Macros</h2>
+                    <h3>Carbs: ${getMacro("Carbohydrates")}</h3>
+                    <h3>Fat: ${getMacro("Fat")}</h3>
+                    <h3>Protein: ${getMacro("Protein")}</h3>
+                    </section>
+                </section>
+            </section>
+        `;
 
+        recipeDetailsSection.innerHTML += recipeHTML;
+    });
+}
 
 
+function pickDay() {
+    const optionsSelect = document.getElementById('select-options-id');
+    const day = document.getElementById('day').value;
+    const monday = document.getElementById('monday').value;
+    const tuesday = document.getElementById('tuesday').value;
+    const wednesday = document.getElementById('wednesday').value;
+    const thursday = document.getElementById('thursday').value;
+    const friday = document.getElementById('friday').value;
+    const saturday = document.getElementById('saturday').value;
+    const sunday = document.getElementById('sunday').value;
 
+            console.log(optionsSelect.value);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// searchBtn.addEventListener('click', performSearch);
-// searchFoodInput.addEventListener('keydown', function (event) {
-//     if (event.key === "Enter") {
-//         performSearch();
-//     }
-// });
-
-// async function performSearch() {
-//     const query = searchFoodInput.value.trim();
-//     const response = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${encodeURIComponent(query)}&api_key=EZP7B3xRD88QmIaeLKsozrgfqG9N3Z6tRLtQikrG`);
-//     const data = await response.json();
-
-//     let html = "";
-//     if (data.foods) {
-//         data.foods.forEach(food => {
-//             html += `
-//                 <section class="food-item">
-//                     <h3>${food.description}</h3>
-//                     <button class="show-macros-btn" data-id="${food.fdcId}">Show Macros</button>
-//                     <div class="macros" id="macros-${food.fdcId}"></div>
-//                 </section>
-//             `;
-//         });
-//     } else {
-//         html = "Sorry not found";
-//     }
-
-//     resultContainer.innerHTML = html;
-// }
-
-// // ✅ Use event delegation
-// document.addEventListener('click', async function (event) {
-//     if (!event.target.classList.contains('show-macros-btn')) return;
-
-//     const fdcId = event.target.getAttribute('data-id');
-//     const macroDiv = document.getElementById(`macros-${fdcId}`);
-//     if (!macroDiv) {
-//         console.error(`macroDiv not found for id macros-${fdcId}`);
-//         return;
-//     }
-
-//     const { protein } = await getFoodDetails(fdcId);
-//     const amount = protein?.value || 'N/A';
-
-//     macroDiv.innerHTML = `<p>Protein: ${amount}g</p>`;
-// });
-
-// async function getFoodDetails(fdcId) {
-//     const response = await fetch(`https://api.nal.usda.gov/fdc/v1/food/${fdcId}?api_key=EZP7B3xRD88QmIaeLKsozrgfqG9N3Z6tRLtQikrG`);
-//     const data = await response.json();
-
-//     const nutrients = data.foodNutrients || [];
-//     const protein = nutrients.find(n => n.nutrientName === 'Protein');
-
-//     return { protein };
-// }
+}
