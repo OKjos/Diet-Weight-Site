@@ -52,7 +52,7 @@
         </section>
         </section>  -->
 
-        <section class="result-header">
+        <section class="result-header" id="APPLE">
         <h2 class="result-name">APPLE</h2>
 
         <section class="img-results">
@@ -60,11 +60,74 @@
 
             <section class="macro-container">
                 <h2>Macros</h2>
-                <h3>Carbs: 0.3g</h3>
-                <h3>Fat: </h3>
-                <h3>Protein: </h3>
+                <h3 data-carb=".3g">Carbs: 0.3g</h3>
+                <h3 data-fat="4g">Fat: 4g</h3>
+                <h3 data-pro="24g">Protein: 24g</h3>
 
-                                <section class="day-selector-title">
+                <section class="day-selector-title">
+                    <h2>Add to a day</h2>
+                    <select id="select-options-id" class="selector-options" onchange="pickDay()">
+                        <option id="day" value="none" selected>Pick day</option>
+                        <option id="monday" value="monday">Monday</option>
+                        <option id="tuesday" value="tuesday">Tuesday</option>
+                        <option id="wednesday" value="wednesday">Wednesday</option>
+                        <option id="thursday" value="thursday">Thursday</option>
+                        <option id="friday" value="friday">Friday</option>
+                        <option id="saturday" value="saturday">Saturday</option>
+                        <option id="sunday" value="sunday">Sunday</option>
+                    </select>
+                </section>
+                <button class="get-recipe">Get Recipe</button>
+            </section>
+            
+        </section>
+
+
+        <!-- <section class="result-header" data-id="2345">
+        <h2 class="result-name">Pizza</h2>
+
+        <section class="img-results">
+            <img src="./IMG/img_6934_48664.jpg" alt="Apple Image">
+
+            <section class="macro-container">
+                <h2>Macros</h2>
+                <h3>Carbs: 5g</h3>
+                <h3>Fat: 8g</h3>
+                <h3>Protein: 5g</h3>
+
+                <section class="day-selector-title">
+                    <h2>Add to a day</h2>
+                    <select id="select-options-id" class="selector-options" onchange="pickDay()">
+                        <option id="day" value="none" selected>Pick day</option>
+                        <option id="monday" value="monday">Monday</option>
+                        <option id="tuesday" value="tuesday">Tuesday</option>
+                        <option id="wednesday" value="wednesday">Wednesday</option>
+                        <option id="thursday" value="thursday">Thursday</option>
+                        <option id="friday" value="friday">Friday</option>
+                        <option id="saturday" value="saturday">Saturday</option>
+                        <option id="sunday" value="sunday">Sunday</option>
+                    </select>
+                </section>
+                <button class="get-recipe">Get Recipe</button>
+            </section>
+            
+        </section>
+
+
+
+        <section class="result-header" data-id="3456">
+        <h2 class="result-name">Pasta</h2>
+
+        <section class="img-results">
+            <img src="./IMG/IMG_3812-1-scaled-e1670948948885.webp" alt="Apple Image">
+
+            <section class="macro-container">
+                <h2>Macros</h2>
+                <h3>Carbs: 0.3g</h3>
+                <h3>Fat: 4g</h3>
+                <h3>Protein: 24g</h3>
+
+                <section class="day-selector-title">
                     <h2>Add to a day</h2>
                     <select id="select-options-id" class="selector-options" onchange="pickDay()">
                         <option id="day" value="none" selected>Pick day</option>
@@ -80,9 +143,10 @@
                 <button class="get-recipe">Get Recipe</button>
             </section>
         </section>
-        </section> 
-
     </section>
-    <script src="script.js"></script>
+
+    <section class="daily-total-container"></section> -->
+    <section id="daily-total-container"></section>
+    <script src="./JS/food.js"></script>
 </body>
 </html>
