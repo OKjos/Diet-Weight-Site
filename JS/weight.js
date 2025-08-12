@@ -21,27 +21,57 @@ async function exerciseSearch() {
     displayResults(exerciseData.data);
 }
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const resultsSection = document.getElementById('results');
+
+    //open popup
+    resultsSection.addEventListener('click', (e) => {
+        if (e.target.classList.contains('add-btn')) {
+            document.querySelector('.popup').classList.add('open-Popup');
+        }
+    });
+
+    //close popup
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('close-btn')) {
+            document.querySelector('.popup').classList.remove('open-Popup');
+        }
+    });
+});
+
 function displayResults(results) {
     const resultsSection = document.getElementById("results");
     resultsSection.innerHTML = "";
 
+
+
     results.forEach(item => {
         const container = document.createElement('section');
         container.classList.add('results');
+
         container.innerHTML = `
             <section class="weight-header">
                 <section class="img-results">
-                    <img src="${item.gifUrl}" alt="${item.name}">
-
-                    <section class="macro-container">
-                        <h3>Targeted Body part: ${item.bodyParts}</h3>
-                        <h2>Primary Muscle Group: ${item.targetMuscles}</h2>
-                        <h2> Secondary Muscle Group: ${item.secondaryMuscles}</h2>
+                    <img class="gif-results" src="${item.gifUrl}" alt="${item.name}">
+                    <section class="muscle-container">
+                        <h3>${item.bodyParts[0].charAt(0).toUpperCase() + item.bodyParts[0].slice(1)}</h3>
+                        <h2>Primary Muscle Group: ${item.targetMuscles[0].charAt(0).toUpperCase() + item.targetMuscles[0].slice(1)}</h2>
+                        <h2> Secondary Muscle Group: ${item.secondaryMuscles[0].charAt(0).toUpperCase() + item.secondaryMuscles.join(', ').slice(1)}</h2>
+                        <button class="add-btn">Add</button>
                     </section>
+                    <section class="popup">
+                    <h2>Add to routine</h2>
+                    <select id="routine-options-id" class="routine-options" onchange="pickDay()">
+                        <option id="day" value="none" selected>Pick day</option>
+                        <option id="monday" value="monday">Monday</option>
+                        <option id="tuesday" value="tuesday">Tuesday</option>
+                    </select>
+                    <button id="close-Popup" class="close-btn">Ok</button>
+                </section>
                 </section>
             </section>
         `
         resultsSection.appendChild(container);
     });
-
 }
