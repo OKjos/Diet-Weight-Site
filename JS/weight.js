@@ -15,6 +15,33 @@ async function exerciseSearch() {
     const exerciseResponse = await fetch(exerciseURL);
     const exerciseData = await exerciseResponse.json();
 
-
+    
     console.log(exerciseData)
+
+    displayResults(exerciseData.data);
+}
+
+function displayResults(results) {
+    const resultsSection = document.getElementById("results");
+    resultsSection.innerHTML = "";
+
+    results.forEach(item => {
+        const container = document.createElement('section');
+        container.classList.add('results');
+        container.innerHTML = `
+            <section class="weight-header">
+                <section class="img-results">
+                    <img src="${item.gifUrl}" alt="${item.name}">
+
+                    <section class="macro-container">
+                        <h3>Targeted Body part: ${item.bodyParts}</h3>
+                        <h2>Primary Muscle Group: ${item.targetMuscles}</h2>
+                        <h2> Secondary Muscle Group: ${item.secondaryMuscles}</h2>
+                    </section>
+                </section>
+            </section>
+        `
+        resultsSection.appendChild(container);
+    });
+
 }

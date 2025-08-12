@@ -24,9 +24,33 @@
 
 /* weights */
 .weight-container {
-    display: flex;
-    justify-content: center;      
-    align-items: center;          
-    gap: 40px;                       
-    margin-top: 3%;  
+  display: flex;
+  justify-content: center;      
+  align-items: center;          
+  gap: 40px;                       
+  margin-top: 3%;  
+}
+
+.weight-container a {
+  border-radius: 2rem;
+  font-size: 16px;
+  background-color: gray;
+  padding: 15px 30px;
+  border: 2px solid black;
+  text-decoration: none;
+  color: white;
+}
+
+.weight-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+.weight-results {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 30px;
+  padding: 20px;
+  justify-items: center;
 }
