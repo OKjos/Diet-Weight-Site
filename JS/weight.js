@@ -24,18 +24,26 @@ async function exerciseSearch() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const resultsSection = document.getElementById('results');
-
+    
     //open popup
     resultsSection.addEventListener('click', (e) => {
-        if (e.target.classList.contains('add-btn')) {
-            document.querySelector('.popup').classList.add('open-Popup');
+        const addBtn = e.target.closest('.add-btn');
+
+        if (addBtn) {
+            const muscleContainer = addBtn.closest('.muscle-container');
+            const popup = muscleContainer.querySelector('.popup');
+            popup.classList.add('open-Popup');
         }
     });
 
     //close popup
     document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('close-btn')) {
-            document.querySelector('.popup').classList.remove('open-Popup');
+        const closeBtn = e.target.closest('.close-btn');
+
+        if (closeBtn) {
+            const muscleContainer = closeBtn.closest('.muscle-container');
+            const popup = muscleContainer.querySelector('.popup');
+            popup.classList.remove('open-Popup');
         }
     });
 });
@@ -59,16 +67,16 @@ function displayResults(results) {
                         <h2>Primary Muscle Group: ${item.targetMuscles[0].charAt(0).toUpperCase() + item.targetMuscles[0].slice(1)}</h2>
                         <h2> Secondary Muscle Group: ${item.secondaryMuscles[0].charAt(0).toUpperCase() + item.secondaryMuscles.join(', ').slice(1)}</h2>
                         <button class="add-btn">Add</button>
+                        <section class="popup">
+                        <h2>Add to routine</h2>
+                        <select id="routine-options-id" class="routine-options" onchange="pickDay()">
+                            <option id="day" value="none" selected>Pick day</option>
+                            <option id="monday" value="monday">Monday</option>
+                            <option id="tuesday" value="tuesday">Tuesday</option>
+                        </select>
+                        <button id="close-Popup" class="close-btn">Ok</button>
                     </section>
-                    <section class="popup">
-                    <h2>Add to routine</h2>
-                    <select id="routine-options-id" class="routine-options" onchange="pickDay()">
-                        <option id="day" value="none" selected>Pick day</option>
-                        <option id="monday" value="monday">Monday</option>
-                        <option id="tuesday" value="tuesday">Tuesday</option>
-                    </select>
-                    <button id="close-Popup" class="close-btn">Ok</button>
-                </section>
+                    </section>
                 </section>
             </section>
         `

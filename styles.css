@@ -135,11 +135,12 @@
   border-radius: 6px;
   text-align: center;
   color: #333;
-  visibility: hidden;
+  position: relative;
+  display: none;
 }
 
 .open-Popup {
-  visibility: visible;
+  display: block;
 }
 
 .routine-options {
